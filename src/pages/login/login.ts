@@ -14,6 +14,7 @@ import {AuthService} from "../../shared/auth-service/auth-service";
 export class LoginPage {
 
     authForm: FormGroup;
+    invalidLogin: boolean;
 
     constructor(private authService: AuthService, public nav: NavController, public navParams: NavParams,
                 public formBuilder: FormBuilder) {
@@ -41,7 +42,8 @@ export class LoginPage {
                 // this.router.navigate(['/login-success']);
                     this.nav.push(LoginSuccessPage);
                 else{
-                    console.error('error..');
+                    console.error('error logging in..');
+                    this.invalidLogin = true;
                 }
                 // this.invalidLogin = true;
             });

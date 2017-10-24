@@ -1,13 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Authorization Page</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Login</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
   <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-    <ion-item>
+      <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
+
+
+      <ion-item>
       <ion-label floating>Email</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>

@@ -29,6 +29,12 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('token');
+
+        const fingerPrintToken = localStorage.getItem('fingerPrintToken');
+        if (fingerPrintToken){
+            localStorage.removeItem('fingerPrintToken');
+        }
+
         console.clear();
     }
 
@@ -40,10 +46,33 @@ export class AuthService {
 
     }
 
+    isLoggedIn2(){
+        const token = localStorage.getItem('token');
+        if (!token) {
+            return false;
+        }else{
+            return true;
+        }
 
+    }
+
+
+    //the fingerPrintToken is optional
     isLoggedIn() {
 
-        return tokenNotExpired();
+        const regLogin = tokenNotExpired();
+        const fingerPrintToken = localStorage.getItem('fingerPrintToken');
+        if (regLogin){
+            return true;
+        }else{
+            if (fingerPrintToken){
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+
         // let jwtHelper = new JwtHelper();
         // let token = localStorage.getItem('token');
         // if (!token)

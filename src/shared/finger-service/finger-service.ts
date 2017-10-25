@@ -26,7 +26,7 @@ export class FingerService{
                     .then((result: any) => {
                         console.log(result);
                         alert('success')
-
+                        localStorage.setItem('fingerPrintToken', result);
                         return result.withFingerprint;
 
                     })

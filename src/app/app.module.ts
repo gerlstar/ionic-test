@@ -22,6 +22,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthService} from "../shared/auth-service/auth-service";
 import {FingerService} from "../shared/finger-service/finger-service";
+import {ProfilePage} from "../pages/profile/profile";
 import {LoginSuccessPage} from "../pages/login-success/login-success";
 
 @NgModule({
@@ -32,7 +33,8 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         ListPage,
         LoginPage,
         LoginSuccessPage,
-        FingerAuthPage
+        FingerAuthPage,
+        ProfilePage
     ],
     imports: [
         HttpModule,
@@ -48,7 +50,8 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         ListPage,
         LoginPage,
         LoginSuccessPage,
-        FingerAuthPage
+        FingerAuthPage,
+        ProfilePage
     ],
     providers: [
         FingerService,

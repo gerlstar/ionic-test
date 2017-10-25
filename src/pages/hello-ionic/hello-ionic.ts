@@ -29,6 +29,9 @@ export class HelloIonicPage {
                 }else{
                     alert('finger print success')
                     alert(result);
+                    //add the finger print hash to localStorage
+                    localStorage.setItem('fingerPrintToken', result);
+
                     this.nav.push(LoginSuccessPage);
                 }
 

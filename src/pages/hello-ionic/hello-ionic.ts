@@ -21,8 +21,17 @@ export class HelloIonicPage {
 
             const s = this.fingerService.showFingerprintAuthDlg();
             s.then(result => {
-                alert(result);
-                this.nav.push(LoginSuccessPage);
+
+                if (!result){
+                    console.error(result);
+                    alert('finger print cancelled')
+                    alert(result);
+                }else{
+                    alert('finger print success')
+                    alert(result);
+                    this.nav.push(LoginSuccessPage);
+                }
+
                 // alert(JSON.stringify(result, Object.getOwnPropertyNames(result)));
             });
 

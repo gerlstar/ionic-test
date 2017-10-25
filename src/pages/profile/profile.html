@@ -15,6 +15,6 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding  *ngIf="authService.isLoggedIn()">
 Profile page
 </ion-content>

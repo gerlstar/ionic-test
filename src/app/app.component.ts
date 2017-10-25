@@ -66,4 +66,9 @@ export class MyApp {
 
 
     }
+
+    logout(){
+        this.nav.setRoot(HelloIonicPage);
+        this.authService.logout();
+    }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ProfilePage} from "../../pages/profile/profile";
 /**
  * Generated class for the LoginSuccessPage page.
  *
@@ -15,11 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginSuccessPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nav: NavController, public navParams: NavParams) {
+    this.nav = nav;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginSuccessPage');
+  }
+
+  goProfile(){
+      this.nav.push(ProfilePage);
   }
 
 }

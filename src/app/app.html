@@ -14,6 +14,7 @@
       <!--{{authService.isLoggedIn()}}-->
       <button ion-item  (click)="openPage2('HelloIonicPage')">Home</button>
       <button ion-item (click)="openPage2('ListPage')">ListPage</button>
+      <button ion-item *ngIf="authService.isLoggedIn()" (click)="openPage2('ProfilePage')">Profile</button>
       <button ion-item *ngIf="!authService.isLoggedIn()" (click)="openPage2('LoginPage')">Login</button>
       <button ion-item *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</button>
     </ion-list>

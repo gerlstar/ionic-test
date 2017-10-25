@@ -9,6 +9,8 @@ import {LoginPage} from '../pages/login/login';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
+import {AuthService} from "../shared/auth-service/auth-service";
+
 
 @Component({
     templateUrl: 'app.html'
@@ -23,7 +25,8 @@ export class MyApp {
     constructor(public platform: Platform,
                 public menu: MenuController,
                 public statusBar: StatusBar,
-                public splashScreen: SplashScreen) {
+                public splashScreen: SplashScreen,
+                public authService:AuthService) {
         this.initializeApp();
 
         // set our app's pages

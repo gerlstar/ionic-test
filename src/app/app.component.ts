@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-
+import * as _ from "lodash";
 import {Platform, MenuController, Nav} from 'ionic-angular';
 
 import {HelloIonicPage} from '../pages/hello-ionic/hello-ionic';
@@ -18,7 +18,7 @@ export class MyApp {
 
     // make HelloIonicPage the root (or first) page
     rootPage = HelloIonicPage;
-    pages: Array<{ title: string, component: any }>;
+    pages: Array<{ title: string, component: any, componentStr: string }>;
 
     constructor(public platform: Platform,
                 public menu: MenuController,
@@ -28,9 +28,9 @@ export class MyApp {
 
         // set our app's pages
         this.pages = [
-            {title: 'Hello Ionic', component: HelloIonicPage},
-            {title: 'My First List', component: ListPage},
-            {title: 'Login', component: LoginPage}
+            {title: 'Hello Ionic', component: HelloIonicPage, componentStr:'HelloIonicPage'},
+            {title: 'My First List', component: ListPage,componentStr:'ListPage'},
+            {title: 'Login', component: LoginPage,componentStr:'LoginPage'}
         ];
     }
 
@@ -48,5 +48,17 @@ export class MyApp {
         this.menu.close();
         // navigate to the new page if it is not the current page
         this.nav.setRoot(page.component);
+    }
+
+    openPage2(strC){
+        // console.log(strC);
+        const c = _.find(this.pages, function(o) {
+            return o.componentStr === strC
+        });
+        if (c != undefined){
+            this.openPage(c);
+        }
+
+
     }
 }

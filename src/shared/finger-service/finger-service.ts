@@ -35,6 +35,7 @@ export class FingerService{
                         alert('error!')
                         // alert(JSON.stringify(error));
                         alert(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+                        return false;
                     });
             }else{
                 return false;

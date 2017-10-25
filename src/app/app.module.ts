@@ -6,6 +6,8 @@ import {MockBackend} from '@angular/http/testing';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
 import {NavController, NavParams} from 'ionic-angular';
+import * as _ from "lodash";
+
 import {fakeBackendProvider} from '../shared/helpers/fake-backend';
 
 import {MyApp} from './app.component';

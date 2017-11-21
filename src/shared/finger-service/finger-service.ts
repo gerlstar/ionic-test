@@ -32,7 +32,7 @@ export class FingerService{
                     })
                     .catch((error: any) => {
                         console.log(error);
-                        alert('error!')
+                        alert('error!');
                         // alert(JSON.stringify(error));
                         alert(JSON.stringify(error, Object.getOwnPropertyNames(error)));
                         return false;

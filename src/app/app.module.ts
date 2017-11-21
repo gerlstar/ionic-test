@@ -4,7 +4,11 @@ import {HttpModule, BaseRequestOptions} from '@angular/http';
 // import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MockBackend} from '@angular/http/testing';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
-import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
+// import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
+
+import { KeychainTouchId } from '@ionic-native/keychain-touch-id';
+
+
 import {NavController, NavParams} from 'ionic-angular';
 import * as _ from "lodash";
 
@@ -56,7 +60,8 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
     providers: [
         FingerService,
         StatusBar,
-        FingerprintAIO,
+        // FingerprintAIO,
+        KeychainTouchId,
         SplashScreen,
         AuthService,
         {provide: ErrorHandler, useClass: IonicErrorHandler},

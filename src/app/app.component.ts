@@ -27,15 +27,15 @@ export class MyApp {
                 public menu: MenuController,
                 public statusBar: StatusBar,
                 public splashScreen: SplashScreen,
-                public authService:AuthService) {
+                public authService: AuthService) {
         this.initializeApp();
 
         // set our app's pages
         this.pages = [
-            {title: 'Hello Ionic', component: HelloIonicPage, componentStr:'HelloIonicPage'},
-            {title: 'My First List', component: ListPage,componentStr:'ListPage'},
-            {title: 'Login', component: LoginPage,componentStr:'LoginPage'},
-            { title: 'Profile', component: ProfilePage, componentStr: 'ProfilePage'}
+            {title: 'Hello Ionic', component: HelloIonicPage, componentStr: 'HelloIonicPage'},
+            {title: 'My First List', component: ListPage, componentStr: 'ListPage'},
+            {title: 'Login', component: LoginPage, componentStr: 'LoginPage'},
+            {title: 'Profile', component: ProfilePage, componentStr: 'ProfilePage'}
         ];
     }
 
@@ -55,19 +55,19 @@ export class MyApp {
         this.nav.setRoot(page.component);
     }
 
-    openPage2(strC){
+    openPage2(strC) {
         // console.log(strC);
-        const c = _.find(this.pages, function(o) {
-            return o.componentStr === strC
+        const c = _.find(this.pages, function (o) {
+            return o.componentStr === strC;
         });
-        if (c != undefined){
+        if (c != undefined) {
             this.openPage(c);
         }
 
 
     }
 
-    logout(){
+    logout() {
         this.nav.setRoot(HelloIonicPage);
         this.authService.logout();
     }

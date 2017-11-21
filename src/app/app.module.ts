@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, ErrorHandler} from '@angular/core';
 import {HttpModule, BaseRequestOptions} from '@angular/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MockBackend} from '@angular/http/testing';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio';
@@ -37,8 +37,8 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         ProfilePage
     ],
     imports: [
-        HttpModule,
-        FormsModule,
+        // HttpModule,
+        // FormsModule,
         BrowserModule,
         IonicModule.forRoot(MyApp),
     ],

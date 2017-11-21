@@ -20,23 +20,23 @@ export class HelloIonicPage {
             await this.platform.ready();
 
             const s = this.fingerService.showFingerprintAuthDlg();
-            s.then(result => {
-
-                if (!result){
-                    console.error(result);
-                    alert('finger print cancelled')
-                    alert(result);
-                }else{
-                    alert('finger print success')
-                    alert(result);
-                    //add the finger print hash to localStorage
-                    localStorage.setItem('fingerPrintToken', result);
-
-                    this.nav.push(LoginSuccessPage);
-                }
-
-                // alert(JSON.stringify(result, Object.getOwnPropertyNames(result)));
-            });
+            // s.then(result => {
+            //
+            //     if (!result){
+            //         console.error(result);
+            //         alert('finger print cancelled')
+            //         alert(result);
+            //     }else{
+            //         alert('finger print success')
+            //         alert(result);
+            //         //add the finger print hash to localStorage
+            //         localStorage.setItem('fingerPrintToken', result);
+            //
+            //         this.nav.push(LoginSuccessPage);
+            //     }
+            //
+            //     // alert(JSON.stringify(result, Object.getOwnPropertyNames(result)));
+            // });
 
         } catch (e) {
             console.error(e);

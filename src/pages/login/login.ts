@@ -3,9 +3,11 @@ import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/form
 import {NavController, NavParams} from 'ionic-angular';
 import {Platform} from 'ionic-angular';
 
+
 import {HelloIonicPage} from '../../pages/hello-ionic/hello-ionic';
 import {LoginSuccessPage} from "../../pages/login-success/login-success";
 import {AuthService} from "../../shared/auth-service/auth-service";
+import {KeychainService} from '../../shared/keychain-service/keychain-service';
 import {FingerService} from "../../shared/finger-service/finger-service";
 import { AlertController } from 'ionic-angular';
 import {ProfilePage} from "../../pages/profile/profile";
@@ -16,13 +18,14 @@ import {ProfilePage} from "../../pages/profile/profile";
 })
 
 export class LoginPage {
-
+    ionicKey = 'IONIC_KEY';
     authForm: FormGroup;
     invalidLogin: boolean;
 
     constructor(private authService: AuthService, public nav: NavController, public navParams: NavParams,
                 public formBuilder: FormBuilder,public alertCtrl: AlertController,
-                private fingerService: FingerService, private platform: Platform) {
+                private fingerService: FingerService, private platform: Platform,
+                private keychainService: KeychainService) {
 
         this.nav = nav;
 
@@ -38,7 +41,7 @@ export class LoginPage {
     }
 
     ngOnInit(){
-        console.log('init!');
+        console.log('init login component!');
         const isLoggedIn = this.authService.isLoggedIn2();
         // console.log(isLoggedIn);
         if (isLoggedIn){
@@ -82,28 +85,52 @@ export class LoginPage {
             await this.platform.ready();
 
             const s = this.fingerService.showFingerprintAuthDlg();
-            s.then(result => {
-
-                if (!result){
-                    console.error(result);
-                    alert('finger print cancelled')
-                    alert(result);
-                }else{
-                    // alert('finger print success')
-                    // alert(result);
-                    this.showAlert();
-                    // this.nav.push(LoginSuccessPage);
-                }
-
-                // alert(JSON.stringify(result, Object.getOwnPropertyNames(result)));
-            });
+            console.info('show auth');
+            // s.then(result => {
+            //
+            //     if (!result){
+            //         console.error(result);
+            //         alert('finger print cancelled')
+            //         alert(result);
+            //     }else{
+            //         // alert('finger print success')
+            //         // alert(result);
+            //         this.showAlert();
+            //         // this.nav.push(LoginSuccessPage);
+            //     }
+            //
+            //     // alert(JSON.stringify(result, Object.getOwnPropertyNames(result)));
+            // });
 
         } catch (e) {
             console.error(e);
         }
-
-
     }
+
+    async showKeyChainAuth(){
+        try{
+            await this.platform.ready();
+
+            this.keychainService.showFingerPrintDlg(this.ionicKey)
+                .then((res :any) => {
+                    // alert('res3 ='+res);
+
+                    if (res == false){
+                        this.showConfirm();
+                    }else{
+                        this.showAlert();
+                    }
+                })
+
+
+
+        }catch (e){
+            alert('catch')
+            console.error(e);
+        }
+    }
+
+
 
     showAlert() {
         let alert = this.alertCtrl.create({
@@ -116,5 +143,36 @@ export class LoginPage {
         // this.nav.push(ProfilePage);
         // this.nav.popToRoot();
         this.nav.setRoot(ProfilePage);
+    }
+
+    showConfirm(){
+        let alert2 = this.alertCtrl.create({
+            message: 'Do you want to delete the key',// ' + this.ionicKey,
+            title: 'Confirm deletion',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    handler: () => {
+                        alert('Nothing has been deleted.');
+                    }
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this.keychainService.deleteKeyChain(this.ionicKey)
+                            .then((res:any) => {
+                                if (res){
+                                    alert(this.ionicKey + ' has been deleted.');
+                                }else{
+                                    alert('FAiled to delete keychain');
+                                }
+                            });
+
+                    }
+                }
+            ]
+        });
+        alert2.present();
     }
 }

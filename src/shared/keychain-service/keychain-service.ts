@@ -12,8 +12,7 @@ export class KeychainService{
     constructor(private app:App,
                 private keychainTouchId: KeychainTouchId) {
         console.log('Keychain service');
-        // this.nav = nav;
-        // this.nav = app.getActiveNav();
+
     }
 
 

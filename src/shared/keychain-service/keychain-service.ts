@@ -78,7 +78,9 @@ export class KeychainService{
                 }
             })
             .catch((err: any) => {
+                //user may have cancelled the finger print dialog
                 alert('err in display: '+err);
+                // return false;
             });
     }
 

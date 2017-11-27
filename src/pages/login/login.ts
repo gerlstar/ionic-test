@@ -120,7 +120,7 @@ export class LoginPage {
 
                         if (res == false){
                             this.showConfirm();
-                        }else{
+                        }else if (res !== undefined){
                             // this.authService.s
                             this.showAlert();
                         }

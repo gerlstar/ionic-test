@@ -22,6 +22,7 @@ export class AuthService {
                 console.log(result);
                 if (result && result.token){
                     localStorage.setItem('token', result.token);
+                    this.events.publish('isLoggedIn',true);
                     return true;
                 }else{
                     return false;
@@ -74,17 +75,19 @@ export class AuthService {
     isLoggedIn() {
 
         const regLogin = tokenNotExpired();
+
         //@todo temp removed so that i can use keychain instead of localstorage
          // const fingerPrintToken = localStorage.getItem('fingerPrintToken');
         // const regLogin = false;
         // const fingerPrintToken = this.keychainService.hasKey(this.ionicKey);
         if (regLogin){
+            this.events.publish('isLoggedIn',true);
             return true;
         }else{
             // const fingerPrintToken = this.keychainService.hasKey(this.ionicKey);
 
             const s = this.keychainService.getHasKeychain();
-            // alert('has keychain? '+s);
+            alert('has keychain? '+s);
 
             if (s == false){
                 return false;

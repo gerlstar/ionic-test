@@ -41,7 +41,7 @@ export class LoginPage {
     }
 
     ngOnInit(){
-        console.log('init login component!');
+        // console.log('init login component!');
         const isLoggedIn = this.authService.isLoggedIn2();
         // console.log(isLoggedIn);
         if (isLoggedIn){
@@ -111,18 +111,21 @@ export class LoginPage {
         try{
             await this.platform.ready();
 
-            this.keychainService.showFingerPrintDlg(this.ionicKey)
-                .then((res :any) => {
-                    // alert('res3 ='+res);
+            const hasKeyChain = this.keychainService.getHasKeychain();
+            // alert('hasKeyChain ='+hasKeyChain);
+            if (hasKeyChain == false){
+                this.keychainService.showFingerPrintDlg(this.ionicKey)
+                    .then((res :any) => {
+                        // alert('was it successful?'+res);
 
-                    if (res == false){
-                        this.showConfirm();
-                    }else{
-                        this.showAlert();
-                    }
-                })
-
-
+                        if (res == false){
+                            this.showConfirm();
+                        }else{
+                            // this.authService.s
+                            this.showAlert();
+                        }
+                    });
+            }
 
         }catch (e){
             alert('catch')
@@ -130,18 +133,16 @@ export class LoginPage {
         }
     }
 
-
-
     showAlert() {
-        let alert = this.alertCtrl.create({
+        let alert3 = this.alertCtrl.create({
             title: 'Login successful',
             subTitle: 'You have successfully logged in.',
             buttons: ['OK']
         });
-        alert.present();
-        // this.nav.pop();
-        // this.nav.push(ProfilePage);
-        // this.nav.popToRoot();
+        alert3.present();
+
+        // const v  = this.authService.isLoggedIn();
+        // alert('v ='+v);
         this.nav.setRoot(ProfilePage);
     }
 

@@ -42,17 +42,18 @@ export class MyApp implements OnInit,  OnDestroy{
             {title: 'Profile', component: ProfilePage, componentStr: 'ProfilePage'}
         ];
 
+        this.listenToLoginEvents();
+    }
 
-        events.subscribe('isLoggedIn', (flag) => {
+    listenToLoginEvents(){
+        this.events.subscribe('isLoggedIn', (flag) => {
             if (flag){
                 this.isLoggedIn = true;
             }else{
                 this.isLoggedIn = false;
             }
         });
-
     }
-
 
     ngOnInit(){
 

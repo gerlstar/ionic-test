@@ -22,10 +22,14 @@ import {ListPage} from '../pages/list/list';
 import {LoginPage} from '../pages/login/login';
 import {FingerAuthPage} from '../pages/finger-auth/finger-auth';
 
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthService} from "../shared/auth-service/auth-service";
 import {FingerService} from "../shared/finger-service/finger-service";
+import {FileMgmtService} from "../shared/file-mgmt-service/file-mgmt-service";
+
 import {KeychainService} from "../shared/keychain-service/keychain-service";
 import {ProfilePage} from "../pages/profile/profile";
 import {LoginSuccessPage} from "../pages/login-success/login-success";
@@ -70,7 +74,10 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         // For creating a mock back-end. You don't need these in a real app.
         fakeBackendProvider,
         MockBackend,
-        BaseRequestOptions
+        BaseRequestOptions,
+        File,
+        FileOpener,
+        FileMgmtService
     ]
 })
 export class AppModule {

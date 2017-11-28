@@ -46,7 +46,7 @@ export class MyApp implements OnInit, OnDestroy {
     }
 
     listenToLoginEvents() {
-       
+
         this.events.subscribe('isLoggedIn', (flag) => {
             if (flag) {
                 this.isLoggedIn = true;

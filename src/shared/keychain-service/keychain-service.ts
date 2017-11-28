@@ -109,8 +109,8 @@ export class KeychainService{
             },(error: any) => {
                 //secret key not available
                 this.hasKeyChain = false;
-                alert('No password stored within the ' + keychain + ' key.');
-                alert(error);
+                // alert('No password stored within the ' + keychain + ' key.');
+                // alert(error);
                 return false;
             });
 

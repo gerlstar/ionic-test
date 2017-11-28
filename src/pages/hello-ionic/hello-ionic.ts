@@ -5,14 +5,23 @@ import {NavController, NavParams} from 'ionic-angular';
 import {LoginSuccessPage} from "../../pages/login-success/login-success";
 // import {FingerprintAIO, FingerprintOptions} from '@ionic-native/fingerprint-aio';
 
+import {FileMgmtService} from '../../shared/file-mgmt-service/file-mgmt-service';
+
 @Component({
     selector: 'page-hello-ionic',
     templateUrl: 'hello-ionic.html'
 })
 export class HelloIonicPage {
     constructor(private fingerService: FingerService, private platform: Platform, public nav: NavController,
-                public navParams: NavParams) {
+                public navParams: NavParams, private filemgmt:FileMgmtService) {
         this.nav = nav;
+
+        this.platform.ready()
+            .then((readySrc) => {
+                // this.fileCheck();
+                this.filemgmt.listFiles();
+            });
+
     }
 
     async showAuth() {

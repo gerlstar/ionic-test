@@ -24,11 +24,14 @@ import {FingerAuthPage} from '../pages/finger-auth/finger-auth';
 
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
+import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
+
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AuthService} from "../shared/auth-service/auth-service";
 import {FingerService} from "../shared/finger-service/finger-service";
 import {FileMgmtService} from "../shared/file-mgmt-service/file-mgmt-service";
+import {PdfService} from "../shared/pdf-service/pdf-service";
 
 import {KeychainService} from "../shared/keychain-service/keychain-service";
 import {ProfilePage} from "../pages/profile/profile";
@@ -77,6 +80,9 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         BaseRequestOptions,
         File,
         FileOpener,
+        FileTransfer,
+        FileTransferObject,
+        PdfService,
         FileMgmtService
     ]
 })

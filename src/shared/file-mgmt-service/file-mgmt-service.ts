@@ -52,7 +52,7 @@ export class FileMgmtService {
                 if (res.length < 1){
                     alert('NO files in the folder ' + folderName);
                     //write a file to a folder
-                    this.writeToFolder(this.file.dataDirectory, fileName, 'htis is cool');
+                    this.writeToFile(this.file.dataDirectory, fileName, 'htis is cool');
                 }else{
                     alert(JSON.stringify(res));
                 }
@@ -65,7 +65,7 @@ export class FileMgmtService {
 
     }
 
-    writeToFolder(folderName:string, fileName:string, content: string) {
+    writeToFile(folderName:string, fileName:string, content: string) {
         this.file.writeFile(folderName, fileName, content, {replace: true})
             .then(() => {
                 alert('success in writing to a file... opening file..');

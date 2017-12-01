@@ -25,6 +25,7 @@ import {FingerAuthPage} from '../pages/finger-auth/finger-auth';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
 import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
+import { Globalization } from '@ionic-native/globalization';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -72,6 +73,7 @@ import {LoginSuccessPage} from "../pages/login-success/login-success";
         // FingerprintAIO,
         KeychainTouchId,
         SplashScreen,
+        Globalization,
         AuthService,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         // For creating a mock back-end. You don't need these in a real app.

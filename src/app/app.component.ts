@@ -2,6 +2,8 @@ import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
 import * as _ from "lodash";
 import {Platform, MenuController, Nav} from 'ionic-angular';
 import {Events} from 'ionic-angular';
+import { Globalization } from '@ionic-native/globalization';
+
 import {HelloIonicPage} from '../pages/hello-ionic/hello-ionic';
 import {ListPage} from '../pages/list/list';
 import {LoginPage} from '../pages/login/login';
@@ -31,7 +33,8 @@ export class MyApp implements OnInit, OnDestroy {
                 public splashScreen: SplashScreen,
                 public authService: AuthService,
                 private keychainService: KeychainService,
-                public events: Events) {
+                public events: Events,
+                private globalization: Globalization) {
         this.initializeApp();
 
         // set our app's pages
@@ -59,13 +62,17 @@ export class MyApp implements OnInit, OnDestroy {
     ngOnInit() {
 
         // this.isLoggedIn = this.authService.isLoggedIn();
-        const hasKey = this.keychainService.hasKey(this.ionicKey);
-        hasKey.then((res: any) => {
+        // const hasKey = this.keychainService.hasKey(this.ionicKey);
+        // hasKey.then((res: any) => {
+        //
+        //     this.isLoggedIn = res;
+        // }, (rej: any) => {
+        //     alert('reject! =' + rej);
+        // });
 
-            this.isLoggedIn = res;
-        }, (rej: any) => {
-            alert('reject! =' + rej);
-        });
+        this.globalization.getPreferredLanguage()
+            .then(res =>alert(JSON.stringify(res)))
+            .catch(e => console.log(e));
 
     }
 
